@@ -122,15 +122,7 @@ class MultiFilterSelectState extends State<MultiFilterSelect> {
                 },
                 child: Container(
                   padding: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
-                  child: RichText(
-                    text: TextSpan(children: [
-                      TextSpan(
-                          text: item.display + ' ',
-                          style: TextStyle(fontSize: 15, color: Colors.black)),
-                      WidgetSpan(
-                          child: item.tail ?? SizedBox.shrink())
-                    ]),
-                  ),
+                  child: _getItemText(item),
                   decoration: BoxDecoration(
                     color: Colors.grey[200],
                     border: Border.all(
@@ -150,5 +142,18 @@ class MultiFilterSelectState extends State<MultiFilterSelect> {
         ),
       ),
     );
+  }
+
+  _getItemText(Item item) {
+    if (item.beneathWidget != null) {
+      return Column(
+        children: <Widget>[
+          Text(item.content),
+          item.beneathWidget
+        ],
+      );
+    } else {
+      return Text(item.content);
+    }
   }
 }

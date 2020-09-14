@@ -104,15 +104,7 @@ class MultiFilterSelectPageState extends State<MultiFilterSelectPage> {
                     },
                     child: Container(
                       padding: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
-                      child: RichText(
-                        text: TextSpan(children: [
-                          TextSpan(
-                              text: item.content + ' ',
-                              style:
-                                  TextStyle(fontSize: 15, color: Colors.black)),
-                          WidgetSpan(child: item.tail ?? SizedBox.shrink())
-                        ]),
-                      ),
+                      child: _getItemText(item),
                       decoration: BoxDecoration(
                         color: _selected ? Colors.blue[50] : Colors.grey[200],
                         border: Border.all(
@@ -153,6 +145,19 @@ class MultiFilterSelectPageState extends State<MultiFilterSelectPage> {
       searchString = searchString.toLowerCase();
       return item.display.toString().toLowerCase().contains(searchString) ||
           item.content.toString().toLowerCase().contains(searchString);
+    }
+  }
+
+  _getItemText(Item item) {
+    if (item.beneathWidget != null) {
+      return Column(
+        children: <Widget>[
+          Text(item.content),
+          item.beneathWidget
+        ],
+      );
+    } else {
+      return Text(item.content);
     }
   }
 }
