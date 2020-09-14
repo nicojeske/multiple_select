@@ -110,7 +110,7 @@ class MultiFilterSelectPageState extends State<MultiFilterSelectPage> {
                               text: item.content + ' ',
                               style:
                                   TextStyle(fontSize: 15, color: Colors.black)),
-                          WidgetSpan(child: item.tail)
+                          WidgetSpan(child: item.tail ?? SizedBox.shrink())
                         ]),
                       ),
                       decoration: BoxDecoration(
