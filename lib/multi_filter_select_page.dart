@@ -104,9 +104,14 @@ class MultiFilterSelectPageState extends State<MultiFilterSelectPage> {
                     },
                     child: Container(
                       padding: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
-                      child: Text(
-                        item.content,
-                        style: TextStyle(fontSize: 15),
+                      child: RichText(
+                        text: TextSpan(children: [
+                          TextSpan(
+                              text: item.content + ' ',
+                              style:
+                                  TextStyle(fontSize: 15, color: Colors.black)),
+                          WidgetSpan(child: item.tail)
+                        ]),
                       ),
                       decoration: BoxDecoration(
                         color: _selected ? Colors.blue[50] : Colors.grey[200],

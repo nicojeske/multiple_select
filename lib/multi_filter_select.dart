@@ -122,9 +122,14 @@ class MultiFilterSelectState extends State<MultiFilterSelect> {
                 },
                 child: Container(
                   padding: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
-                  child: Text(
-                    item.display,
-                    style: TextStyle(fontSize: 15),
+                  child: RichText(
+                    text: TextSpan(children: [
+                      TextSpan(
+                          text: item.display + ' ',
+                          style: TextStyle(fontSize: 15, color: Colors.black)),
+                      WidgetSpan(
+                          child: item.tail ?? SizedBox.shrink())
+                    ]),
                   ),
                   decoration: BoxDecoration(
                     color: Colors.grey[200],

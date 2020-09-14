@@ -9,10 +9,13 @@ class Item<V, D, C> {
   /// display in the list content.
   C content;
 
+  Widget tail;
+
   Item.build({
     @required this.value,
     @required this.display,
     @required this.content,
+    this.tail
   });
 
   Item.fromJson(
